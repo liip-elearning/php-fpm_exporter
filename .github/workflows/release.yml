@@ -1,7 +1,7 @@
 name: Release
 on:
   workflow_dispatch:
-  # Release patches and secruity updates on a schedule
+  # Release patches and secruity updates monthly
   schedule:
     - cron: "0 0 1 * *"
 
