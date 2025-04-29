@@ -2350,5 +2350,5 @@
     "timezone": "",
     "title": "Kubernetes PHP-FPM",
     "version": 55,
-    "description": "A companion dashboard for https://github.com/hipages/php-fpm_exporter\r\n\r\nThe dashboard caters to Kubernetes & PHP-FPM but can be easily adjusted."
+    "description": "A companion dashboard for https://github.com/liip-elearning/php-fpm_exporter\r\n\r\nThe dashboard caters to Kubernetes & PHP-FPM but can be easily adjusted."
 }

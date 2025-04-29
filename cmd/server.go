@@ -21,7 +21,7 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/hipages/php-fpm_exporter/phpfpm"
+	"github.com/liip-elearning/php-fpm_exporter/phpfpm"
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 	"github.com/spf13/cobra"
