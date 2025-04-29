@@ -71,7 +71,7 @@ jobs:
       uses: goreleaser/goreleaser-action@v4.3.0
       with:
         version: latest
-        args: release --rm-dist --snapshot
+        args: release --clean --snapshot
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -79,7 +79,7 @@ jobs:
       uses: anchore/scan-action@v6.0.0
       id: scan
       with:
-        image: "hipages/php-fpm_exporter:latest"
+        image: "liip-elearning/php-fpm_exporter:latest"
         acs-report-enable: true
         fail-build: false
 
