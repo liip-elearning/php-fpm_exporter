@@ -17,7 +17,7 @@ package phpfpm
 import (
 	"encoding/json"
 	"fmt"
-	"io/ioutil"
+	"io"
 	"net/url"
 	"regexp"
 	"strconv"
@@ -42,6 +42,8 @@ const PoolProcessRequestReadingHeaders string = "Reading headers"
 
 // PoolProcessRequestInfo defines a process that is getting request information. Was changed in PHP 7.4 to PoolProcessRequestInfo74
 const PoolProcessRequestInfo string = "Getting request informations"
+
+// PoolProcessRequestInfo74 defines a process that is getting request information (PHP 7.4+).
 const PoolProcessRequestInfo74 string = "Getting request information"
 
 // PoolProcessRequestEnding defines a process that is about to end.
@@ -176,9 +178,9 @@ func (p *Pool) Update() (err error) {
 		return p.error(err)
 	}
 
-	defer resp.Body.Close()
+	defer func() { _ = resp.Body.Close() }()
 
-	content, err := ioutil.ReadAll(resp.Body)
+	content, err := io.ReadAll(resp.Body)
 	if err != nil {
 		return p.error(err)
 	}

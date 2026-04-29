@@ -1,3 +1,5 @@
+version: 2
+
 builds:
   - binary: php-fpm_exporter
     env:
@@ -31,6 +33,7 @@ dockers:
       - "--build-arg=VERSION={{.Version}}"
       - "--build-arg=BUILD_DATE={{.Date}}"
       - "--build-arg=VCS_REF={{.FullCommit}}"
+
 docker_manifests:
   - name_template: "ghcr.io/liip-elearning/php-fpm_exporter:latest"
     image_templates:
@@ -56,6 +59,6 @@ changelog:
 
 archives:
   - id: default
-    format: binary
+    formats: [binary]
   - id: targz
-    format: tar.gz
+    formats: [tar.gz]

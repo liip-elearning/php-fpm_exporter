@@ -1,10 +1,20 @@
+FROM --platform=$BUILDPLATFORM golang:1.24-alpine AS builder
+WORKDIR /app
+COPY . .
+ARG TARGETOS=linux
+ARG TARGETARCH=amd64
+ARG VERSION=dev
+RUN CGO_ENABLED=0 GOOS=$TARGETOS GOARCH=$TARGETARCH go build \
+    -ldflags="-X main.version=${VERSION}" \
+    -o php-fpm_exporter .
+
 FROM alpine:3.23.4
 
 ARG BUILD_DATE
 ARG VCS_REF
 ARG VERSION
 
-COPY php-fpm_exporter /
+COPY --from=builder /app/php-fpm_exporter /
 
 EXPOSE     9253
 ENTRYPOINT [ "/php-fpm_exporter", "server" ]
