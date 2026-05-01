@@ -67,7 +67,7 @@ jobs:
       run: docker build -t php-fpm_exporter:scan .
 
     - name: Scan image
-      uses: anchore/scan-action@v6.5.0
+      uses: anchore/scan-action@v7.4.0
       id: scan
       with:
         image: "php-fpm_exporter:scan"
