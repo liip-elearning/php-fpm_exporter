@@ -49,6 +49,8 @@ const PoolProcessRequestInfo74 string = "Getting request information"
 // PoolProcessRequestEnding defines a process that is about to end.
 const PoolProcessRequestEnding string = "Ending"
 
+const schemeUnix string = "unix"
+
 var log logger
 
 type logger interface {
@@ -254,7 +256,7 @@ func parseURL(rawurl string) (scheme string, address string, path string, err er
 	scheme = uri.Scheme
 
 	switch uri.Scheme {
-	case "unix":
+	case schemeUnix:
 		result := strings.Split(uri.Path, ";")
 		address = result[0]
 		if len(result) > 1 {
